@@ -18,7 +18,8 @@ const deviceIdValidator = z.object({
 interface Device {
   id: string
   time: number
-  name: string
+  name: string | null | undefined
+  os: string | null | undefined
 }
 function parseDevice(device: string): Device | null {
   try {

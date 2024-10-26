@@ -43,7 +43,20 @@ const usernameOrEmail = z
   .min(3, 'Username or email must contain at least 3 characters')
   .max(255, 'Username or email must contain at most 255 characters')
 
-export const loginZodValidator = z.object({ username: usernameOrEmail, password })
+export const loginZodValidator = z.object({
+  username: usernameOrEmail,
+  password,
+  deviceName: z
+    .string({ required_error: 'Device name is required.' })
+    .trim()
+    .min(3, 'Device name must contain at least 3 characters')
+    .max(255, 'Device name must contain at most 255 characters'),
+  deviceOs: z
+    .string({ required_error: 'Device OS is required.' })
+    .trim()
+    .min(3, 'Device OS must contain at least 3 characters')
+    .max(255, 'Device OS must contain at most 255 characters'),
+})
 
 export const signupZodValidator = z.object({ name, username, email, password })
 

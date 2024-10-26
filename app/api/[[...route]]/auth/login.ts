@@ -10,7 +10,7 @@ import jwt from 'jsonwebtoken'
 
 const login = new Hono().post('/', zValidator('form', loginZodValidator, validationError), async (c) => {
   await Promise.all([connectMongo(), connectRedis()])
-  const { username, password } = c.req.valid('form')
+  const { username, password, deviceName, deviceOs } = c.req.valid('form')
 
   // Check if user exists
   const user = await User.findOne(
@@ -65,7 +65,8 @@ const login = new Hono().post('/', zValidator('form', loginZodValidator, validat
 
   const deviceData: Device = {
     time: Date.now(),
-    name: c.req.header('User-Agent') || 'unknown',
+    name: deviceName || c.req.header('User-Agent') || 'Unknown',
+    os: deviceOs || 'Unknown',
   }
 
   await redClient.hSet(user._id.toString(), hashString(token), JSON.stringify(deviceData))
@@ -81,6 +82,7 @@ const login = new Hono().post('/', zValidator('form', loginZodValidator, validat
 export type Device = {
   time: number
   name: string
+  os: string
 }
 
 export default login
