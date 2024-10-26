@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lexend:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+.lexend {
+  font-family: 'Lexend', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+.mono {
+  font-family: 'DM Mono', monospace;
+  font-optical-sizing: auto;
+  font-weight: 300 500;
+  font-style: normal;
+}
+
+.rubik {
+  font-family: 'Rubik', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300 900;
+  font-style: normal;
+}
+.title {
+  background: linear-gradient(90deg, rgb(0, 119, 231), rgb(1, 216, 209));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hue-rotate-animation 15s infinite;
+}
+
+@keyframes hue-rotate-animation {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(170deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}

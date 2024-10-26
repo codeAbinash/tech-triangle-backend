@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    "outDir": "dist",
+    "declaration": true,
+    "paths": {
+      "@/*": ["./*"],
+      "@components/*": ["./components/*"],
+      "@ui/*": ["./components/ui/*"],
+      "@route/*": ["./app/api/[[...route]]/*"],
+      "@api/*": ["./app/api/*"],
+      "@app/*": ["./app/*"],
+      "@rpc/*": ["./dist/app/rpc/*"]
+    }
+  },
+  "include": ["./app/rpc/hcWithType.ts", "./app/rpc/rpc.ts"],
+  "exclude": ["node_modules", "dist"]
+}
