@@ -12,6 +12,9 @@ const login = new Hono().post('/', zValidator('form', loginZodValidator, validat
   await Promise.all([connectMongo(), connectRedis()])
   const { username, password, deviceName, deviceOs } = c.req.valid('form')
 
+
+  
+
   // Check if user exists
   const user = await User.findOne(
     { $or: [{ username: username }, { email: username }] },
@@ -62,6 +65,8 @@ const login = new Hono().post('/', zValidator('form', loginZodValidator, validat
   const token = jwt.sign(tokenData, process.env.JWT_SECRET as string, {
     expiresIn: '1y',
   })
+
+  console.log(deviceName, deviceOs)
 
   const deviceData: Device = {
     time: Date.now(),

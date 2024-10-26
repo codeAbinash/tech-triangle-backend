@@ -1,6 +1,6 @@
 'use client'
 import client from '@/app/rpc/honoClient'
-import { ls } from '@/app/utils/utils'
+import { getBrowserName, getOSName, ls } from '@/app/utils/utils'
 import Nav from '@/components/Nav'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -9,17 +9,22 @@ import { GitHubLogoIcon } from '@radix-ui/react-icons'
 import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import router from 'next/router'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 export default function LoginPage() {
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
+  const deviceName = useMemo(() => getBrowserName(), [])
+  const deviceOs = useMemo(() => getOSName(), [])
+
+  useEffect(() => {
+    console.log(deviceName, deviceOs)
+  }, [])
 
   const { mutate, isPending } = useMutation({
-    mutationFn: () => client?.api.auth.login.$post({ form: { username, password } }),
+    mutationFn: () => client?.api.auth.login.$post({ form: { username, password, deviceName, deviceOs } }),
     onSuccess: async (res) => {
       const data = await res.json()
       console.log(data)

@@ -25,17 +25,18 @@ export async function connectMongo() {
   }
 }
 
-// export const redClient = createClient({
-//   password: process.env.REDIS_PASSWORD,
-//   socket: {
-//     host: process.env.REDIS_HOST,
-//     port: process.env.REDIS_PORT,
-//   },
-// })
-
-export const redClient = createClient({
+export const redClientRedis = createClient({
+  password: process.env.REDIS_PASSWORD,
+  socket: {
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+  },
+})
+export const redClientUpstash = createClient({
   url: process.env.UPSTASH_URI,
 })
+
+export const redClient = process.env.NODE_ENV === 'production' ? redClientUpstash : redClientRedis
 
 export async function connectRedis() {
   if (redClient.isOpen) {
