@@ -6,7 +6,6 @@ import changelog from './changelog'
 import devices from './devices'
 import { hono } from './hono'
 import profile from './profile/profile'
-import redis from './redis/redis'
 import version from './version'
 import verify from './auth/verify'
 import usernameStatus from './auth/usernameStatus'
@@ -22,11 +21,10 @@ const signupRoute = hono.route('/auth/signup', signup)
 const verifyRoute = hono.route('/auth/verify', verify)
 const usernameStatusRoute = hono.route('/auth/username/status', usernameStatus)
 const changelogRoute = hono.route('/changelog', changelog)
-const redisRoute = hono.route('/redis', redis)
 const profileRoute = hono.route('/profile', profile)
 const devicesRoute = hono.route('/devices', devices)
 const getAllUsersRoute = hono.route('/admin/users/all', getAllUsers)
-const logoutRoute = hono.route('/logout' , logout)
+const logoutRoute = hono.route('/logout', logout)
 
 const route = hono.get('/', async (c) => {
   return c.json({
@@ -43,9 +41,7 @@ export type AppType =
   | typeof versionRoute
   | typeof loginRoute
   | typeof changelogRoute
-  | typeof redisRoute
   | typeof signupRoute
-  | typeof redisRoute
   | typeof profileRoute
   | typeof devicesRoute
   | typeof verifyRoute
