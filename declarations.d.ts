@@ -6,7 +6,7 @@ declare namespace NodeJS {
     JWT_SECRET: string
     REDIS_PASSWORD: string
     REDIS_HOST: string
-    REDIS_PORT: number
+    REDIS_PORT: string
     UPSTASH_URI: string
   }
 }

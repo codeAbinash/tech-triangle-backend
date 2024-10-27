@@ -25,16 +25,13 @@ export async function connectMongo() {
   }
 }
 
-
 export const redClientRedis = createClient({
   password: process.env.REDIS_PASSWORD,
   socket: {
     host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT ? Number(process.env.REDIS_PORT) : undefined,
+    port: Number(process.env.REDIS_PORT),
   },
 })
-
-
 
 export const redClientUpstash = createClient({
   url: process.env.UPSTASH_URI,
