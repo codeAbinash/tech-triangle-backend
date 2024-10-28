@@ -10,7 +10,14 @@ const version = new Hono().get('/', async (c) => {
     return c.json({
       message: 'Version found',
       status: true,
-      data: version,
+      data: {
+        version: version.version,
+        date: version.date,
+        forceUpdate: version.forceUpdate,
+        features: version.features,
+        versionCode: version.versionCode,
+        size: version.size,
+      },
     })
 
   return c.json({
