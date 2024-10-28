@@ -4,7 +4,7 @@ import { Hono } from 'hono'
 
 const version = new Hono().get('/', async (c) => {
   await connectMongo()
-  const version = await VersionModel.findOne()
+  const version = await VersionModel.findOne().sort({ createdAt: -1 })
 
   if (version)
     return c.json({
@@ -12,6 +12,7 @@ const version = new Hono().get('/', async (c) => {
       status: true,
       data: {
         version: version.version,
+        versionCode: version.versionCode,
         date: version.date,
         forceUpdate: version.forceUpdate,
         features: version.features,

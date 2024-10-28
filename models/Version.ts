@@ -30,6 +30,10 @@ const VersionSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  versionCode: {
+    type: Number,
+    required: true,
+  },
 })
 
 const VersionModel = mongoose.models.Version || mongoose.model('Version', VersionSchema)
