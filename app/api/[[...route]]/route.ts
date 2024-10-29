@@ -11,9 +11,12 @@ import verify from './auth/verify'
 import usernameStatus from './auth/usernameStatus'
 import getAllUsers from './admin/getAllUsers'
 import logout from './auth/logout'
+import { checkAdmin } from './admin/checkAdmin'
+import updateVersion from './admin/updateVersion'
 
 // Apply middleware globally
 hono.use('*', validateToken)
+hono.use('/admin/*', checkAdmin)
 
 const versionRoute = hono.route('/version', version)
 const loginRoute = hono.route('/auth/login', login)
@@ -24,6 +27,7 @@ const changelogRoute = hono.route('/changelog', changelog)
 const profileRoute = hono.route('/profile', profile)
 const devicesRoute = hono.route('/devices', devices)
 const getAllUsersRoute = hono.route('/admin/users/all', getAllUsers)
+const updateVersionRoute = hono.route('/admin/updateVersion', updateVersion)
 const logoutRoute = hono.route('/logout', logout)
 
 const route = hono.get('/', async (c) => {
@@ -48,3 +52,4 @@ export type AppType =
   | typeof usernameStatusRoute
   | typeof getAllUsersRoute
   | typeof logoutRoute
+  | typeof updateVersionRoute

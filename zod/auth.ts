@@ -40,6 +40,7 @@ const otp = z
 const usernameOrEmail = z
   .string({ required_error: 'Username or email is required.' })
   .trim()
+  .toLowerCase()
   .min(3, 'Username or email must contain at least 3 characters')
   .max(255, 'Username or email must contain at most 255 characters')
 
