@@ -21,7 +21,7 @@ const email = z
   .toLowerCase()
   .min(5, 'Email must contain at least 5 characters')
   .max(50, 'Email must contain at most 50 characters')
-  .refine((e) => /\S+@\S+\.\S+/.test(e), 'Invalid email format')
+  .email('Invalid email format')
 
 const name = z
   .string({ required_error: 'Name is required.' })
