@@ -1,7 +1,7 @@
 import { handle } from 'hono/vercel'
 import { checkAdmin } from './admin/checkAdmin'
-import getAllUsers from './admin/getAllUsers'
 import updateVersion from './admin/updateVersion'
+import users from './admin/users'
 import login from './auth/login'
 import logout from './auth/logout'
 import signup from './auth/signup'
@@ -26,7 +26,7 @@ const usernameStatusRoute = hono.route('/auth/username/status', usernameStatus)
 const changelogRoute = hono.route('/changelog', changelog)
 const profileRoute = hono.route('/profile', profile)
 const devicesRoute = hono.route('/devices', devices)
-const getAllUsersRoute = hono.route('/admin/users/all', getAllUsers)
+const UsersRoute = hono.route('/admin/users', users)
 const updateVersionRoute = hono.route('/admin/updateVersion', updateVersion)
 const logoutRoute = hono.route('/logout', logout)
 
@@ -50,6 +50,6 @@ export type AppType =
   | typeof devicesRoute
   | typeof verifyRoute
   | typeof usernameStatusRoute
-  | typeof getAllUsersRoute
   | typeof logoutRoute
   | typeof updateVersionRoute
+  | typeof UsersRoute

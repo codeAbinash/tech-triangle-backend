@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const username = z
+export const usernameValidator = z
   .string({ required_error: 'Username is required.' })
   .trim()
   .toLowerCase()
@@ -59,8 +59,8 @@ export const loginZodValidator = z.object({
     .max(255, 'Device OS must contain at most 255 characters'),
 })
 
-export const signupZodValidator = z.object({ name, username, email, password })
+export const signupZodValidator = z.object({ name, username: usernameValidator, email, password })
 
-export const verifyEmailZodValidator = z.object({ username, otp })
+export const verifyEmailZodValidator = z.object({ username: usernameValidator, otp })
 
-export const usernameStatusZodValidator = z.object({ username })
+export const usernameStatusZodValidator = z.object({ username: usernameValidator })
