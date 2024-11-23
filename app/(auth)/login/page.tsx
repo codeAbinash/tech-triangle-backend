@@ -19,9 +19,9 @@ export default function LoginPage() {
   const deviceName = useMemo(() => getBrowserName(), [])
   const deviceOs = useMemo(() => getOSName(), [])
 
-  useEffect(() => {
-    console.log(deviceName, deviceOs)
-  }, [])
+  // useEffect(() => {
+  //   console.log(deviceName, deviceOs)
+  // }, [deviceName, deviceOs])
 
   const { mutate, isPending } = useMutation({
     mutationFn: () => client?.api.auth.login.$post({ form: { username, password, deviceName, deviceOs } }),

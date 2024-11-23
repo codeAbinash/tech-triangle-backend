@@ -9,7 +9,8 @@ const versionClient = testClient<Version>(version)
 // export const dynamic = 'force-dynamic'
 
 // Revalidate the page after 5 minutes
-export const revalidate = 5 * 60 // 5 Minutes
+// eslint-disable-next-line prefer-const
+export let revalidate = 5 * 60 // 5 Minutes
 
 const mockVersionData = {
   data: {
