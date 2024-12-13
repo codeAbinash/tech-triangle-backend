@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["UPSTASH"]
+  "cSpell.words": [
+    "UPSTASH"
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
