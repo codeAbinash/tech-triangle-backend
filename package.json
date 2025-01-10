@@ -37,7 +37,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
-    "hono": "^4.6.13",
+    "hono": "^4.6.16",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.468.0",
     "mongoose": "^8.9.0",
