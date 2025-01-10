@@ -4,11 +4,12 @@ import { z } from 'zod'
 export const versionValidator = z.object({
   version: z
     .string()
-    .min(5, { message: 'Version length must be x.y.z, minimum 5 characters' })
+    .min(5, { message: 'Version length must be like x.y.z, minimum 5 characters' })
     .max(20, { message: 'Version length must be in 20 characters' }),
   date: z.date(),
-  forceUpdate: z.boolean(),
+  versionCode: z.number(),
   features: z.array(z.string()),
+  criticalVersionCode: z.number(),
 })
 
 const VersionSchema = new mongoose.Schema({
@@ -22,15 +23,15 @@ const VersionSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  forceUpdate: {
-    type: Boolean,
-    required: true,
-  },
   features: {
     type: [String],
     required: true,
   },
   versionCode: {
+    type: Number,
+    required: true,
+  },
+  criticalVersionCode: {
     type: Number,
     required: true,
   },

@@ -13,9 +13,9 @@ const version = new Hono().get('/', async (c) => {
       data: {
         version: version.version,
         date: version.date,
-        forceUpdate: version.forceUpdate,
         features: version.features,
         versionCode: version.versionCode,
+        criticalVersionCode: version.criticalVersionCode,
         size: version.size,
         id: version._id.toString(),
       },

@@ -6,16 +6,16 @@ import { validationError } from '../../utils/validation'
 
 const updateVersion = new Hono().post('/', zValidator('json', versionUpdateValidator, validationError), async (c) => {
   console.log('This is the route for updateVersion')
-  const { features, version, versionCode, forceUpdate, updateSize } = c.req.valid('json')
+  const { features, version, versionCode, updateSize, criticalVersionCode } = c.req.valid('json')
 
   const data = await VersionModel.findOneAndUpdate(
     {},
     {
       date: new Date(),
-      version: version,
-      versionCode: versionCode,
-      features: features,
-      forceUpdate: forceUpdate,
+      version,
+      versionCode,
+      criticalVersionCode,
+      features,
       size: updateSize,
     },
   )
@@ -25,9 +25,9 @@ const updateVersion = new Hono().post('/', zValidator('json', versionUpdateValid
   console.log('Data', data)
 
   return c.json({
-    message: 'Hello from updateVersion',
-    status: true,
-    data: null,
+    message: data ? 'Version updated successfully' : 'Failed to update version',
+    status: !!data,
+    data,
   })
 })
 

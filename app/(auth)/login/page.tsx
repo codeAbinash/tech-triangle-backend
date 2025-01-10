@@ -9,7 +9,7 @@ import { GitHubLogoIcon } from '@radix-ui/react-icons'
 import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 export default function LoginPage() {
   const [username, setUsername] = useState('')
