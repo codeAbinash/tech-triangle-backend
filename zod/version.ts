@@ -6,7 +6,7 @@ const versionUpdateValidator = z.object(
     version: z.string({ required_error: 'Version is required.' }).trim().min(1).max(255),
     updateSize: z.string({ required_error: 'Size is required.' }).trim().min(1).max(255),
     features: z
-      .array(z.string({ required_error: 'Feature is required.' }).trim().min(1).max(100), {
+      .array(z.string({ required_error: 'Feature is required.' }).trim().min(1).max(512), {
         required_error: 'Features is required.',
       })
       .max(100),
