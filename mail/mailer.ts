@@ -4,8 +4,8 @@ type EmailConfig = {
   to: string
   subject: string
   html: string
-  text?: string
-  headers?: Record<string, string>
+  text: string
+  headers: Record<string, string>
 }
 
 export async function sendEmail({ to, subject, html, text = '' }: EmailConfig) {
